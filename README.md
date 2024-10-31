@@ -2,12 +2,15 @@
 OSU Bootcamp: Final Group Project
 
 # Project Overview:
-A terpene recommendation system that is designed to help users find a suitable terpene strain that fits their needs. 
-- Users can search for a specific type of terpene or write a description of what they are looking for.
-- The system will provide a list of five terpenes that best match the user's needs.
-- The results include: terpene's name, a description of the terpene, a compound score that assesses the description, and a list of effects with a score that ranges from 0 to 1 based on how powerful the effects are in each terpene. 
+A cannabis recommendation system that is designed to help users find the right profile of terpenes and cannabinoids to fit their needs. 
+- Users can search for a specific type of terpene or write a description of what they are looking for: a strain or terpene they already enjoy, a particular aroma or flavor they like, an illness they are suffering, etc.
+- The system will provide a list of five strains that best match the user's needs.
+- The results include: strain's name, a description of the strain, a compound score that assesses the description's sentiment, and a list of effects with a score that ranges from 0 to 1 based on how powerful the effects are in each strain.
 
-# Data cleanup
+# Data Acquisition and Cleaning
+We worked with two datasets in this project. The first was a Github compilation of cannabis product testing results from three different lab sources. The second was a Kaggle dataset sourced from Leafly and contained cannabis strain data including user feedback scores showing the percentage applicability of the strain across various effects and illnesses that can be ameliorated. The goal was to join these two datasets and develop a neural network model to predict the effects or illnesses scores based on the strain's tested values. This model would then be integrated into a language model based on the strain descriptions to provide further context based on empirical test data. The further hope would be that these user effects could be predicted in new strains based on initial test findings.
+
+
 
 # VADER:
 - Vader was used to create a sentiment analysis based on the description column from the dataframe. 
