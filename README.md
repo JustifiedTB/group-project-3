@@ -7,8 +7,17 @@ A cannabis recommendation system that is designed to help users find the right p
 - The system will provide a list of five strains that best match the user's needs.
 - The results include: strain's name, a description of the strain, a compound score that assesses the description's sentiment, and a list of effects with a score that ranges from 0 to 1 based on how powerful the effects are in each strain.
 
-# Data Acquisition and Cleaning
+# Data Acquisition and Goals
 We worked with two datasets in this project. The first was a Github compilation of cannabis product testing results from three different lab sources. The second was a Kaggle dataset sourced from Leafly and contained cannabis strain data including user feedback scores showing the percentage applicability of the strain across various effects and illnesses that can be ameliorated. The goal was to join these two datasets and develop a neural network model to predict the effects or illnesses scores based on the strain's tested values. This model would then be integrated into a language model based on the strain descriptions to provide further context based on empirical test data. The further hope would be that these user effects could be predicted in new strains based on initial test findings.
+
+# Data Cleaning 
+The testing data contained over 30,000 unique strain names. Many of these strains had dozens or hundreds of unique test results across various consumer products, so each strain was grouped and averaged over the testing columns to provide an expected profile for each strain. More robust cleaning and merging could be done to fully match each duplicate, but the two datasets were joined on the existing strain names, after which remained 1111 unique strains with terpene and cannabinoid test results and user feedback scores for effects and illnesses. The strain type (indica, hybrid, sativa) were encoded as an ordinal variable. This was chosen to preserve any potential information present within the species paradigm, from low-energy indica to high-energy sativa and hybrid strains as crossbreeds attempting to meet in the middle.
+
+# Model Tuning
+The KerasTuner module was used to search and optimize Sequential Keras models for the effects and illnesses separately, each predicting from the set of test results and the encoded strain type. The tuner was set with an optimization metric of mean absolute error and a loss of mean squared error, outputting a softmax activation function across the effects and illnesses columns.
+
+# Model Results
+The effects model produced an MSE of 0.0356 and an MAE of 0.10876. The illnesses model produced an MSE of 0.004878 and an MAE of 0.023768.
 
 
 
