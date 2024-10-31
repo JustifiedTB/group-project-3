@@ -20,7 +20,6 @@ The KerasTuner module was used to search and optimize Sequential Keras models fo
 The effects model produced an MSE of 0.0356 and an MAE of 0.10876. The illnesses model produced an MSE of 0.004878 and an MAE of 0.023768.
 
 
-
 # VADER:
 - Vader was used to create a sentiment analysis based on the description column from the dataframe. 
 
@@ -33,6 +32,13 @@ the result was a compound score which is the overall sentiment of the descriptio
 
 - a new compound score column was created and added to the dataframe
 
+# Langchain
+- Langchain was used to handle user input and was inegrated in Gradio so that it processes the input before the recommendation functions is called so that the input is more suitable for processing
+- def get_dynamic_input(user_input):
+    prompt = ChatPromptTemplate.from_template(
+        "User wants recommendation based on: {user_input}, reply with a suitable recommendation"
+    )
+
 # Sentence transformer
 - A Sentence Transformer model was used to generate embeddings for the description column
 - final_data['embeddings'] = final_data['description'].apply(
@@ -42,7 +48,13 @@ the result was a compound score which is the overall sentiment of the descriptio
 sentence_model.encode([user_input], convert_to_tensor=True).cpu().numpy()
 - the purpose of this model was to generate embeddings for both descripton and user input to match what the user is asking for.
 
-# Langchain
+# Keras 
+- Keras was used on a list of terpenes effects to predict the intensity of each effect associated with terpens. Its purpose is for the system to have the ability to factor in the values of the effects to better serve the user.
+
+# Gradio
+- A gradio interface was created for the recommendation system it calls LangChain so that it handles user input and then calls the recommendation function to further process the input and give results that match what the user asked for. 
+- Gradio was customized using a built in theme (soft)
+- A public URL was created
 
 
 
